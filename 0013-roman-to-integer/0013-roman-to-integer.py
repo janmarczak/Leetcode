@@ -12,17 +12,10 @@ class Solution:
         }
 
         sum = 0
-        last_char = ''
-        for char in s:
-            if (char == 'V' or char == 'X') and last_char == 'I':
-                sum -= 2 * romans[last_char]
-            elif (char == 'L' or char == 'C') and last_char == 'X':
-                sum -= 2 * romans[last_char]
-            elif (char == 'D' or char == 'M') and last_char == 'C':
-                sum -= 2 * romans[last_char]
-
-            sum += romans[char]
-            last_char = char
-
+        for i, char in enumerate(s):
+            if i < len(s) - 1 and romans[char] < romans[s[i+1]]:
+                sum -= romans[char]
+            else:
+                sum += romans[char]
 
         return sum
