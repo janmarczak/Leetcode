@@ -9,15 +9,16 @@ class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         if not root:
             return True
-        return self.helper(root.left, root.right)
 
-    def helper(self, leftNode, rightNode):
+        return self.isSame(root.left, root.right)
+
+    def isSame(self, leftNode, rightNode):
         if not leftNode and not rightNode:
             return True
         if not leftNode or not rightNode:
             return False
         return (
             (leftNode.val == rightNode.val) and 
-            (self.helper(leftNode.left, rightNode.right)) and
-            (self.helper(leftNode.right, rightNode.left))
+            (self.isSame(leftNode.left, rightNode.right)) and
+            (self.isSame(leftNode.right, rightNode.left))
         )
