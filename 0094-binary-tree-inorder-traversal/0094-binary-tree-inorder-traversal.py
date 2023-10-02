@@ -7,14 +7,34 @@ class TreeNode:
 
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        # if root == None:
+        #     return []
 
-        if root == None:
-            return []
+        # r1 = self.inorderTraversal(root.left)
+        # r1.append(root.val)
+        # r1 += self.inorderTraversal(root.right)
+        # return r1
 
-        r1 = self.inorderTraversal(root.left)
-        r1.append(root.val)
-        r1 += self.inorderTraversal(root.right)
-        return r1
+        inorder = []
+        self.inorder(root, inorder)
+        return inorder
+
+    def inorder(self, node, inorder):
+        if not node:
+            return
+        
+        self.inorder(node.left, inorder)
+        inorder.append(node.val)
+        self.inorder(node.right, inorder)
+
+    # def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    #     if not root:
+    #         return []
+
+    #     r1 = [root.val]
+    #     r1 += self.preorderTraversal(root.left)
+    #     r1 += self.preorderTraversal(root.right)
+    #     return r1
 
 
 
