@@ -4,10 +4,12 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
         return self.helper(root.left, root.right)
-
 
     def helper(self, leftNode, rightNode):
         if not leftNode and not rightNode:
