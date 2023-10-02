@@ -16,5 +16,6 @@ class Solution:
     def recursive_helper(self, n: int, cache) -> int:
         if n in cache:
             return cache[n]
-        return self.recursive_helper(n-1, cache) + self.recursive_helper(n-2, cache)
+        cache[n] = self.recursive_helper(n-1, cache) + self.recursive_helper(n-2, cache)
+        return cache[n]
 
