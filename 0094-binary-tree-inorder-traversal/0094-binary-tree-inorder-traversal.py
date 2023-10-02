@@ -12,10 +12,8 @@ class Solution:
             return []
 
         r1 = self.inorderTraversal(root.left)
-        print(r1)
         r1.append(root.val)
         r1 += self.inorderTraversal(root.right)
-        print(r1)
         return r1
 
 
