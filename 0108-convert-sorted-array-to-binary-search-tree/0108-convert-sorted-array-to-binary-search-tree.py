@@ -9,7 +9,7 @@ class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
 
         total_nums = len(nums)
-
+        
         if not total_nums:
             return None
 
