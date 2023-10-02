@@ -4,15 +4,18 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+
 class Solution:
 
-
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        if not root:
-            return []
+        pre = []
+        self.preorder(root, pre)
+        return pre
 
-        r1 = [root.val]
-        r1 += self.preorderTraversal(root.left)
-        r1 += self.preorderTraversal(root.right)
-        return r1
+    def preorder(self, node, pre):
+        if node is None:
+            return
+        pre.append(node.val)
+        self.preorder(node.left, pre)
+        self.preorder(node.right, pre)
         
