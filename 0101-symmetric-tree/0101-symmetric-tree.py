@@ -27,41 +27,70 @@ class Solution:
     #         (self.isSame(leftNode.right, rightNode.left))
     #     )
 
-    # ITERATIVE SOLUTION:
-
-    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        if not root:
-            return True
-        
-        # Use two queues to traverse the left and right subtrees.
-        left_queue = deque([root.left])
-        right_queue = deque([root.right])
-        
-        while left_queue and right_queue:
-            left_node = left_queue.popleft()
-            right_node = right_queue.popleft()
-            
-            # If both nodes are None, continue the loop.
-            if not left_node and not right_node:
-                continue
-            
-            # If one of them is None (but not both), return False.
-            if not left_node or not right_node:
-                return False
-            
-            # Check if values are different.
-            if left_node.val != right_node.val:
-                return False
-            
-            # Enqueue children in appropriate order for checking symmetry.
-            left_queue.append(left_node.left)
-            left_queue.append(left_node.right)
-            right_queue.append(right_node.right)
-            right_queue.append(right_node.left)
-            
-        return True
-
-
 
     # TIME: O(N) where N is the number of nodes. We need to visit each node once if it's symmetric
     # SPACE: O(h), where h is the height of the tree. In the worst case, the tree can be completely    unbalanced, and the recursion stack can go as deep as the height of the tree.
+
+    # ITERATIVE SOLUTION (BFS):
+
+    # def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+    #     if not root:
+    #         return True
+        
+    #     # Use two queues to traverse the left and right subtrees.
+    #     left_queue = deque([root.left])
+    #     right_queue = deque([root.right])
+        
+    #     while left_queue and right_queue:
+    #         left_node = left_queue.popleft()
+    #         right_node = right_queue.popleft()
+            
+    #         # If both nodes are None, continue the loop.
+    #         if not left_node and not right_node:
+    #             continue
+            
+    #         # If one of them is None (but not both), return False.
+    #         if not left_node or not right_node:
+    #             return False
+            
+    #         # Check if values are different.
+    #         if left_node.val != right_node.val:
+    #             return False
+            
+    #         # Enqueue children in appropriate order for checking symmetry.
+    #         left_queue.append(left_node.left)
+    #         left_queue.append(left_node.right)
+    #         right_queue.append(right_node.right)
+    #         right_queue.append(right_node.left)
+            
+    #     return True
+
+    # ITERAITVE SOLUTION (DFS):
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
+
+        # Use a single stack to traverse the tree.
+        stack = [(root.left, root.right)]
+
+        while stack:
+            left_node, right_node = stack.pop()
+
+            # If both nodes are None, continue the loop.
+            if not left_node and not right_node:
+                continue
+
+            # If one of them is None (but not both), return False.
+            if not left_node or not right_node:
+                return False
+
+            # Check if values are different.
+            if left_node.val != right_node.val:
+                return False
+
+            # Push children of left and right subtrees onto the stack in such a 
+            # way that we can compare the corresponding nodes for symmetry.
+            stack.append((left_node.left, right_node.right))
+            stack.append((left_node.right, right_node.left))
+
+        return True
