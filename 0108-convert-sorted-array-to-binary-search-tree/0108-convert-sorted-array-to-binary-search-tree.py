@@ -5,20 +5,37 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
+
 class Solution:
+
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         return self.makeBST(nums, 0, len(nums))
 
-
-    def makeBST(self, nums, start, end):
-        if start >= end:
+    # FIRST OPTION (but slicing Operation is O(n))
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        total_nums = len(nums)
+        
+        if not total_nums:
             return None
-        mid_node = (start+end) // 2
+
+        mid_node = total_nums // 2
         return TreeNode(
             nums[mid_node],
-            self.makeBST(nums, start, mid_node),
-            self.makeBST(nums, mid_node + 1, end)
+            self.sortedArrayToBST(nums[:mid_node]),
+            self.sortedArrayToBST(nums[mid_node + 1:])
         )
+
+    # 2ND SOLUTION: Pointers
+    # def makeBST(self, nums, start, end):
+    #     if start >= end:
+    #         return None
+    #     mid_node = (start+end) // 2
+    #     return TreeNode(
+    #         nums[mid_node],
+    #         self.makeBST(nums, start, mid_node),
+    #         self.makeBST(nums, mid_node + 1, end)
+    #     )
 
 
 # TIME COMPLEXITY: O(N LOG N)
