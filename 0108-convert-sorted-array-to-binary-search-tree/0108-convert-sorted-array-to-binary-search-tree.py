@@ -7,19 +7,26 @@ class TreeNode:
 
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        return self.makeBST(nums, 0, len(nums))
 
-        total_nums = len(nums)
-        
-        if not total_nums:
+
+    def makeBST(self, nums, start, end):
+        if start >= end:
             return None
-
-        mid_node = total_nums // 2
+        mid_node = (start+end) // 2
         return TreeNode(
             nums[mid_node],
-            self.sortedArrayToBST(nums[:mid_node]),
-            self.sortedArrayToBST(nums[mid_node + 1:])
+            self.makeBST(nums, start, mid_node),
+            self.makeBST(nums, mid_node + 1, end)
         )
 
+
+# TIME COMPLEXITY: O(N LOG N)
+#   The first call processes n elements
+#   The next two calls process n/2 elements each
+#   The next four calls process n/4 elements each
+#   ... and so on
+# SPACE COMPLEXITY: O(N)
        
 
 
