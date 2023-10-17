@@ -4,13 +4,13 @@ class Solution:
         lowest_price = 10000000
         max_profit = 0
 
-        for i in range(len(prices)):
-            if prices[i] <= lowest_price:
-                lowest_price = prices[i]
+        for sell in prices:
+            if sell <= lowest_price:
+                lowest_price = sell
             else:
-                if prices[i] - lowest_price > max_profit:
-                    max_profit = prices[i] - lowest_price
-
+                # max(max_profit, sell - lowest_price)
+                if sell - lowest_price > max_profit:
+                    max_profit = sell - lowest_price
 
         return max_profit
         
