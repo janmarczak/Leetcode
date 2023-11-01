@@ -1,22 +1,20 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
 
-
         # Input: nums = [4,1,2,1,2]
         # Output: 4
-        elements = set()
-        another_elements = set()
+
+        freq = {}
 
         for element in nums:
-            if element not in elements:
-                elements.add(element)
+            if element not in freq:
+                freq[element] = 1
             else:
-                another_elements.add(element)
-        # print(another_elements)
-        # print((elements - another_elements))
-
-        for element in (elements - another_elements):
-            return element
-        # return another_elements - elements
-
+                freq[element] += 1
         
+        print(freq)
+
+        for key, value in freq.items():
+            if value == 1:
+                return key
+
