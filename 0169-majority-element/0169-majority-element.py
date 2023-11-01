@@ -1,7 +1,26 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
 
-        # 1. HashMap
+        ### 1. Moore Voting Algorithm
+        # Time: O(n)
+        # Space: O(1)
+
+        count = 0
+        candidate = 0
+
+        for n in nums:
+            if count == 0:
+                candidate = n
+
+            if n == candidate:
+                count += 1
+            else:
+                count -=1
+
+        return candidate
+
+
+        ### 2. HashMap
         # Time: O(n)
         # Space: O(n)
 
@@ -15,29 +34,11 @@ class Solution:
         #     if freq[n] > (len(nums) / 2):
         #         return n
 
-        # 2. Sort the array
+        ### 3. Sort the array and take the middle element
         # Time: O(N Log N)
         # Space: O(1)
-        nums = sorted(nums)
-        return nums[int((len(nums)/2))]
-        # max_count = 1
-        # majority_element = nums[0]
-        # count = 1
-        # element = nums[0]
-        # for i in range(1, len(nums)):
-        #     print(nums[i])
-        #     if nums[i] == element:
-        #         count += 1
-        #     else:
-        #         element = nums[i]
-        #         count = 1
-
-        #     if count > max_count:
-        #             max_count = count
-        #             majority_element = element
-        # return majority_element
-
-
-        
+        # nnums.sort()
+        # n = len(nums)
+        # return nums[n//2]
 
         
