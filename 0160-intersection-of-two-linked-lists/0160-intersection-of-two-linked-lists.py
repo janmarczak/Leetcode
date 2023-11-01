@@ -56,7 +56,7 @@ class Solution:
                 temp2 = temp2.next
 
         diff = c1 - c2
-        if diff < 0: # headB is bigger than headA by difd
+        if diff < 0: # headB is bigger than headA by diff
             while diff != 0:
                 headB = headB.next
                 diff += 1
@@ -65,7 +65,7 @@ class Solution:
                 headA = headA.next
                 diff -= 1
 
-        while headA and headB:
+        while headA:
             if headA == headB:
                 return headA
             headA = headA.next
