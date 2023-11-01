@@ -7,13 +7,34 @@ class ListNode:
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
 
-        visited_nodes = set()
-        while head:
-            if head not in visited_nodes:
-                visited_nodes.add(head)
-            else:
+        ### 1. Using a set
+        # Time: O(n)
+        # Space: O(n)
+
+        # visited_nodes = set()
+        # while head:
+        #     if head not in visited_nodes:
+        #         visited_nodes.add(head)
+        #     else:
+        #         return True
+        #     head = head.next
+        # return False
+
+        ### 2. Two pointers
+        # - They move at different speeds. If there is a cycle the fast pointer will 
+        # eventually catch up to the slow pointer
+        # Time: O(n)
+        # Space: O(1)
+
+        slow_pointer = head
+        fast_pointer = head
+
+        while fast_pointer and fast_pointer.next:
+            slow_pointer = slow_pointer.next
+            fast_pointer = fast_pointer.next.next
+            if slow_pointer == fast_pointer:
                 return True
-            head = head.next
+        
         return False
 
 
