@@ -7,10 +7,10 @@ class ListNode:
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
 
-        values = set()
+        visited_nodes = set()
         while head:
-            if head not in values:
-                values.add(head)
+            if head not in visited_nodes:
+                visited_nodes.add(head)
             else:
                 return True
             head = head.next
