@@ -40,34 +40,55 @@ class Solution:
 
         # return None
 
-        ### 2. Lenghts
+        ### 2. Length
         # Two variables storing the lenghts of the linked lists
 
-        c1 = c2 = 0
-        temp1, temp2 = headA, headB
+        # c1 = c2 = 0
+        # temp1, temp2 = headA, headB
 
-        # Get the length
-        while temp1 or temp2:
-            if temp1:
-                c1 += 1
-                temp1 = temp1.next
-            if temp2:
-                c2 += 1
-                temp2 = temp2.next
+        # # Get the length
+        # while temp1 or temp2:
+        #     if temp1:
+        #         c1 += 1
+        #         temp1 = temp1.next
+        #     if temp2:
+        #         c2 += 1
+        #         temp2 = temp2.next
 
-        diff = c1 - c2
-        if diff < 0: # headB is bigger than headA by diff
-            while diff != 0:
-                headB = headB.next
-                diff += 1
-        else: # headA is bigger than headB by diff
-            while diff != 0:
-                headA = headA.next
-                diff -= 1
+        # # Move the bigger array by the difference so that we can start from the same spot
+        # diff = c1 - c2
+        # if diff < 0: # headB is bigger than headA by diff
+        #     while diff != 0:
+        #         headB = headB.next
+        #         diff += 1
+        # else: # headA is bigger than headB by diff
+        #     while diff != 0:
+        #         headA = headA.next
+        #         diff -= 1
+        
+        # # Traverse finally
+        # while headA:
+        #     if headA == headB:
+        #         return headA
+        #     headA = headA.next
+        #     headB = headB.next
+        # return None
 
-        while headA:
-            if headA == headB:
-                return headA
-            headA = headA.next
-            headB = headB.next
-        return None
+        ### 3. Two Pointers
+        # Time: O(n+m)
+        # Space: O(1)
+        a, b = headA, headB
+
+        while a != b:
+            if a is None:
+                a = headB
+            else:
+                a = a.next
+            
+            if b is None:
+                b = headA
+            else:
+                b = b.next
+
+        return a
+
