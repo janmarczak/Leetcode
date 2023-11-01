@@ -9,9 +9,41 @@ class Solution:
         
         visited = set()
 
+        ### 1. 
+        # while headA:
+        #     if headA not in visited:
+        #         visited.add(headA)
+        #     headA = headA.next
+
+        # while headB:
+        #     if headB not in visited:
+        #         visited.add(headB)
+        #     else:
+        #         return headB
+        #     headB = headB.next
+
+        # return None
+
+        while headA and headB:
+            if headA not in visited:
+                visited.add(headA)
+            else:
+                return headA
+            if headB not in visited:
+                visited.add(headB)
+            else: 
+                return headB
+            headA = headA.next
+            headB = headB.next
+
+        print(headA)
+        print(headB)
+
         while headA:
             if headA not in visited:
                 visited.add(headA)
+            else:
+                return headA
             headA = headA.next
 
         while headB:
@@ -22,6 +54,7 @@ class Solution:
             headB = headB.next
 
         return None
+
         
 
         # listA = [4,1,8,4,5], 
