@@ -26,7 +26,6 @@ class Solution:
         # Time: O(n)
         # Space: O(1)
 
-
         fast_pointer = head
         while fast_pointer and fast_pointer.next:
             head = head.next
@@ -36,7 +35,8 @@ class Solution:
         
         return False
 
-
-        # [3,2,0,-4],
-
-        # 3 -> 2 -> 0 -> -4 -> 2 -> 0 -> -4 -> 2
+        # head = [3,2,0,-4]
+        # 0: 3, 3
+        # 1: 2, 0
+        # 2: 0, 2
+        # 3: -4, -4 CYCLE
