@@ -2,31 +2,24 @@ class Solution:
     def majorityElement(self, nums: List[int]) -> int:
 
         # 1. HashMap
+        # Time: O(n)
+        # Space: O(n)
 
-        freq = {}
-        for n in nums:
-            if n not in freq:
-                freq[n] = 1
-            else:
-                freq[n] += 1
-                
-            if freq[n] > (len(nums) / 2):
-                return n
+        # freq = {}
+        # for n in nums:
+        #     if n not in freq:
+        #         freq[n] = 1
+        #     else:
+        #         freq[n] += 1
 
+        #     if freq[n] > (len(nums) / 2):
+        #         return n
 
-        # max_value = -1
-        # majority_element = None
-        # for key, value in freq.items():
-        #     if value > max_value:
-        #         majority_element = key
-        #         max_value = value
-
-        # return majority_element
-
-        # We know the length
-
-        # 1. Sort the array
-        # nums = sorted(nums)
+        # 2. Sort the array
+        # Time: O(N Log N)
+        # Space: O(1)
+        nums = sorted(nums)
+        return nums[int((len(nums)/2))]
         # max_count = 1
         # majority_element = nums[0]
         # count = 1
