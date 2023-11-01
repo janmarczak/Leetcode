@@ -7,19 +7,16 @@ class ListNode:
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
 
-        if head == None:
-            return False
-
         values = set()
-
-        while head.next:
+        while head:
             if head not in values:
                 values.add(head)
             else:
                 return True
             head = head.next
-
         return False
 
 
-        
+        # [3,2,0,-4],
+
+        # 3 -> 2 -> 0 -> -4 -> 2 -> 0 -> -4 -> 2
