@@ -30,10 +30,12 @@ class Solution:
         # 1	0	1
         # 0	0	0
 
-        answer = 0
-        for element in nums:
-            answer = answer ^ element
-        return answer
+        # answer = 0
+        # for element in nums:
+        #     answer = answer ^ element
+        # return answer
+
+        return functools.reduce(lambda x, y: x ^ y, nums, 0)
 
 
 
