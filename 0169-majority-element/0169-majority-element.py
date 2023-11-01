@@ -2,6 +2,8 @@ class Solution:
     def majorityElement(self, nums: List[int]) -> int:
 
         ### 1. Moore Voting Algorithm
+        # - majority element will always be in the lead even after
+        # encountering other elements
         # Time: O(n)
         # Space: O(1)
 
