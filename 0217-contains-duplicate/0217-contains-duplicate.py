@@ -1,13 +1,15 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
 
+        # Time: O(N), Space: O(1)
+        # 
         nums = sorted(nums)
 
-        # [1,2,3,1] -> 1 1 2 3 
-
+        prev = None
         for i in range(len(nums)):
-            if i != len(nums) - 1 and nums[i] == nums[i+1]:
+            if nums[i] == prev:
                 return True
-        
+            prev = nums[i]
+
         return False
         
