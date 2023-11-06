@@ -12,8 +12,8 @@ class Solution:
 
         # return False
 
-        # Time: 
-        # Space: 
+        # Time: O(n)
+        # Space: O(n)
 
         unique_values = set()
 
